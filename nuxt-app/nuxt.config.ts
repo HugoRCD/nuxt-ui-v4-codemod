@@ -14,6 +14,14 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+  ui: {
+    colorMode: false
+  },
+
+  uiPro: {
+    content: true
+  },
+
   css: ['~/assets/css/main.css'],
 
   future: {

@@ -29,8 +29,9 @@ nodes:
           base_path: "."
           config_file: "rules/replace-nuxt-config-module.yml"
       
-      - name: "Comment uiPro config in app.config.ts (manual merge needed)"
-        ast-grep:
+      - name: "Merge uiPro config into ui section in app.config.ts"
+        js-ast-grep:
+          js_file: "scripts/merge-uipro-to-ui.ts"
           include:
             - "**/app.config.ts"
             - "**/app.config.js"
@@ -38,7 +39,7 @@ nodes:
             - "**/node_modules/**"
             - "**/fixtures/**"
           base_path: "."
-          config_file: "rules/merge-uipro-to-ui.yml"
+          language: "typescript"
       
       - name: "Replace @nuxt/ui-pro dependency with @nuxt/ui in package.json"
         ast-grep:
