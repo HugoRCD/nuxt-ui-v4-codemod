@@ -35,7 +35,7 @@ npx nuxt-ui-v4-codemod --verbose
 export default defineNuxtConfig({
   modules: ['@nuxt/ui-pro'],
   uiPro: { license: 'xxx' },
-  ui: { global: true }
+  ui: { colorMode: false }
 })
 ```
 
@@ -45,7 +45,7 @@ export default defineNuxtConfig({
 export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   ui: { 
-    global: true,
+    colorMode: false,
     license: 'xxx' 
   }
 })
