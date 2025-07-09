@@ -1,34 +1,16 @@
 schema_version: "1.0"
-name: "nuxt-ui-v4-codemod"
+name: "nuxt-ui-v4-migration"
 version: "0.1.0"
-description: "Migration from Nuxt UI Pro to Nuxt UI v4 - Merge NuxtUI and NuxtUI Pro into unified library"
+description: "Migration from Nuxt UI Pro to Nuxt UI v4"
 author: "hugo@nuxtlabs.com"
 license: "MIT"
 workflow: "workflow.yaml"
 category: "migration"
 
 targets:
-  languages: ["javascript", "typescript", "vue", "css", "json"]
-  extensions: [".js", ".ts", ".jsx", ".tsx", ".vue", ".css", ".scss", ".sass", ".less", ".json"]
+  languages: ["javascript", "typescript", "css", "vue"]
 
-transformations:
-  - name: "package-json-dependencies"
-    description: "Replace @nuxt/ui-pro with @nuxt/ui in package.json"
-    files: ["package.json", "package-lock.json", "yarn.lock", "pnpm-lock.yaml"]
-  
-  - name: "nuxt-config-modules"
-    description: "Replace @nuxt/ui-pro with @nuxt/ui in Nuxt configuration"
-    files: ["nuxt.config.{js,ts}", "nuxt.config.{js,ts}"]
-  
-  - name: "css-imports"
-    description: "Replace @nuxt/ui-pro imports with @nuxt/ui in CSS files"
-    files: ["**/*.{css,scss,sass,less}"]
-  
-  - name: "js-ts-imports"
-    description: "Replace @nuxt/ui-pro imports with @nuxt/ui in JS/TS files"
-    files: ["**/*.{js,ts,jsx,tsx,vue}"]
-
-keywords: ["nuxt-ui", "nuxt-ui-pro", "migration", "v4", "transformation"]
+keywords: ["nuxt-ui", "migration", "vue", "typescript"]
 
 registry:
   access: "public"

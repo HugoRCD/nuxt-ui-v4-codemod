@@ -1,4 +1,4 @@
-# nuxt-ui-v4-codemod
+# nuxt-ui-v4-migration
 
 Migration to Nuxt UI v4
 
@@ -6,7 +6,7 @@ Migration to Nuxt UI v4
 
 ```bash
 # Install from registry
-codemod run nuxt-ui-v4-codemod
+codemod run nuxt-ui-v4-migration
 
 # Or run locally
 codemod run -w workflow.yaml
@@ -24,7 +24,7 @@ This codemod transforms javascript code by:
 
 ```bash
 # Test the transformation
-bash scripts/transform.sh
+npm test
 
 # Validate the workflow
 codemod validate -w workflow.yaml

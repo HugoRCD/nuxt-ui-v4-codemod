@@ -1,27 +1,18 @@
 version: "1"
 nodes:
-  - id: setup
-    name: Setup Environment
+  - id: apply-nuxt-ui-migrations
+    name: Apply Nuxt UI v4 Migration Rules
     type: automatic
+    runtime:
+      type: direct
     steps:
-      - id: init
-        name: Initialize
-        run: ./scripts/setup.sh
-
-  - id: transform
-    name: Apply Transformations
-    type: automatic
-    depends_on: [setup]
-    steps:
-      - id: apply
-        name: Apply Changes
-        run: ./scripts/transform.sh
-
-  - id: cleanup
-    name: Cleanup
-    type: automatic
-    depends_on: [transform]
-    steps:
-      - id: clean
-        name: Clean temporary files
-        run: ./scripts/cleanup.sh
+      - name: "Replace @nuxt/ui-pro imports with @nuxt/ui in CSS files"
+        ast-grep:
+          include:
+            - "**/*.css"
+            - "**/*.scss"
+            - "**/*.sass"
+          exclude:
+            - "**/node_modules/**"
+          base_path: "."
+          config_file: "rules/replace-css-imports.yml"

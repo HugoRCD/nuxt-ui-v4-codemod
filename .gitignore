@@ -30,6 +30,4 @@ Thumbs.db
 
 # Package bundles
 *.tar.gz
-*.tgz
-
-nuxt-app
+*.tgz 
