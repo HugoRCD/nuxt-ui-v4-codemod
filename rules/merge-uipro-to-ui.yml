@@ -1,0 +1,12 @@
+id: merge-uipro-to-ui-config
+language: typescript
+rule:
+  pattern: |
+    uiPro: {
+      $$$CONTENT
+    }
+fix: |
+    // TODO: Merge this uiPro config into the ui config above
+    // uiPro: {
+    //   $$$CONTENT
+    // } 

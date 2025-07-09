@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+// import type { HeaderProps } from '@nuxt/ui-pro'
 
 defineProps<{
   links: NavigationMenuItem[]

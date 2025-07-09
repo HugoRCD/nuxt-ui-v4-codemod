@@ -1,0 +1,5 @@
+id: replace-nuxt-ui-pro-module
+language: typescript
+rule:
+  pattern: "'@nuxt/ui-pro'"
+fix: "'@nuxt/ui'" 

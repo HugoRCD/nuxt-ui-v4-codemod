@@ -14,5 +14,38 @@ nodes:
             - "**/*.sass"
           exclude:
             - "**/node_modules/**"
+            - "**/fixtures/**"
           base_path: "."
           config_file: "rules/replace-css-imports.yml"
+      
+      - name: "Replace @nuxt/ui-pro module with @nuxt/ui in nuxt.config.ts"
+        ast-grep:
+          include:
+            - "**/nuxt.config.ts"
+            - "**/nuxt.config.js"
+          exclude:
+            - "**/node_modules/**"
+            - "**/fixtures/**"
+          base_path: "."
+          config_file: "rules/replace-nuxt-config-module.yml"
+      
+      - name: "Comment uiPro config in app.config.ts (manual merge needed)"
+        ast-grep:
+          include:
+            - "**/app.config.ts"
+            - "**/app.config.js"
+          exclude:
+            - "**/node_modules/**"
+            - "**/fixtures/**"
+          base_path: "."
+          config_file: "rules/merge-uipro-to-ui.yml"
+      
+      - name: "Replace @nuxt/ui-pro dependency with @nuxt/ui in package.json"
+        ast-grep:
+          include:
+            - "**/package.json"
+          exclude:
+            - "**/node_modules/**"
+            - "**/fixtures/**"
+          base_path: "."
+          config_file: "rules/replace-package-dependency.yml"

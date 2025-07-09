@@ -1,39 +1,49 @@
-# nuxt-ui-v4-migration
+# Nuxt UI v4 Migration Codemod
 
-Migration to Nuxt UI v4
+Migration from Nuxt UI Pro to Nuxt UI v4
 
-## Installation
+## 🧪 Testing
 
-```bash
-# Install from registry
-codemod run nuxt-ui-v4-migration
-
-# Or run locally
-codemod run -w workflow.yaml
-```
-
-## Usage
-
-This codemod transforms javascript code by:
-
-- Converting `var` declarations to `const`/`let`
-- Removing debug statements
-- Modernizing syntax patterns
-
-## Development
+Test your rules safely before applying them:
 
 ```bash
-# Test the transformation
-npm test
-
-# Validate the workflow
-codemod validate -w workflow.yaml
-
-# Publish to registry
-codemod login
-codemod publish
+# Run automated tests on fixtures
+./test-codemod.sh
 ```
 
-## License
+This script will:
+- Test transformations on `fixtures/` directory
+- Compare results with expected output
+- Restore original state after testing
 
-MIT 
+## 🚀 Usage
+
+### Validate workflow
+```bash
+npx codemod@next workflow validate -w workflow.yaml
+```
+
+### Run on entire project
+```bash
+npx codemod@next workflow run -w workflow.yaml
+```
+
+### Run on specific directory
+```bash
+npx codemod@next workflow run -w workflow.yaml --param base_path=nuxt-app
+```
+
+## 📋 Current Rules
+
+### CSS Import Replacement
+- **Rule**: `rules/replace-css-imports.yml`
+- **Target**: `@import "@nuxt/ui-pro";` → `@import "@nuxt/ui";`
+- **Files**: `**/*.css`, `**/*.scss`, `**/*.sass`
+
+## 🔧 Development
+
+1. Add new rules in `rules/` directory
+2. Update `workflow.yaml` with new steps
+3. Add test fixtures in `fixtures/`
+4. Test with `./test-codemod.sh`
+5. Apply to project when ready 
