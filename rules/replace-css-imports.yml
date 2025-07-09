@@ -1,5 +1,4 @@
 id: replace-nuxt-ui-pro-import-css
 language: css
-rule:
-  pattern: '@import "@nuxt/ui-pro";'
+pattern: '@import "@nuxt/ui-pro";'
 fix: '@import "@nuxt/ui";' 
