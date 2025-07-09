@@ -1,49 +1,64 @@
-# Nuxt UI v4 Migration Codemod
+# Nuxt UI v4 Codemod
 
-Migration from Nuxt UI Pro to Nuxt UI v4
+**Automated migration tool for upgrading from Nuxt UI (and Nuxt UI Pro) to Nuxt UI v4**
 
-## 🧪 Testing
+Nuxt UI v4 consolidates Nuxt UI and Nuxt UI Pro into a single package. This codemod handles all the breaking changes automatically.
 
-Test your rules safely before applying them:
+## What it does
+
+- Updates `@nuxt/ui-pro` → `@nuxt/ui` in package.json
+- Merges `uiPro` config into `ui` section in nuxt.config.ts and app.config.ts  
+- Replaces CSS imports `@import "@nuxt/ui-pro"` → `@import "@nuxt/ui"`
+- Updates module registration in nuxt.config.ts
+
+## Usage
 
 ```bash
-# Run automated tests on fixtures
-./test-codemod.sh
+# Run on current directory (dry-run by default)
+npx nuxt-ui-v4-codemod
+
+# Run on specific project
+npx nuxt-ui-v4-codemod --target /path/to/project
+
+# Apply changes
+npx nuxt-ui-v4-codemod --apply
+
+# Verbose output
+npx nuxt-ui-v4-codemod --verbose
 ```
 
-This script will:
-- Test transformations on `fixtures/` directory
-- Compare results with expected output
-- Restore original state after testing
+## Example
 
-## 🚀 Usage
-
-### Validate workflow
-```bash
-npx codemod@next workflow validate -w workflow.yaml
+**Before:**
+```typescript
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui-pro'],
+  uiPro: { license: 'xxx' },
+  ui: { global: true }
+})
 ```
 
-### Run on entire project
-```bash
-npx codemod@next workflow run -w workflow.yaml
+**After:**
+```typescript
+// nuxt.config.ts  
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  ui: { 
+    global: true,
+    license: 'xxx' 
+  }
+})
 ```
 
-### Run on specific directory
-```bash
-npx codemod@next workflow run -w workflow.yaml --param base_path=nuxt-app
-```
+## Options
 
-## 📋 Current Rules
+| Option | Description |
+|--------|-------------|
+| `--target <path>` | Target directory (default: current) |
+| `--apply` | Apply changes (default: dry-run) |
+| `--verbose` | Show detailed output |
 
-### CSS Import Replacement
-- **Rule**: `rules/replace-css-imports.yml`
-- **Target**: `@import "@nuxt/ui-pro";` → `@import "@nuxt/ui";`
-- **Files**: `**/*.css`, `**/*.scss`, `**/*.sass`
+---
 
-## 🔧 Development
-
-1. Add new rules in `rules/` directory
-2. Update `workflow.yaml` with new steps
-3. Add test fixtures in `fixtures/`
-4. Test with `./test-codemod.sh`
-5. Apply to project when ready 
+Make sure your project is committed to git before running the migration. 

@@ -4,8 +4,8 @@ import { program } from 'commander'
 import { runner } from './runner.js'
 
 program
-  .name('nuxt-ui-v4-upgrade')
-  .description('Migrate from Nuxt UI Pro to Nuxt UI v4')
+  .name('nuxt-ui-v4-codemod')
+  .description('Automated migration tool for upgrading from Nuxt UI (and Nuxt UI Pro) to Nuxt UI v4')
   .version('1.0.0')
 
 program

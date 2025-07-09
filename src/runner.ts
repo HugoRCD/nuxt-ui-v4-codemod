@@ -28,8 +28,8 @@ export class CodemodRunner {
   async run(options: RunnerOptions): Promise<void> {
     logger.info('Starting Nuxt UI v4 migration...')
     
-    const rulesPath = path.join(process.cwd(), 'rules')
-    const customRulesPath = path.join(process.cwd(), 'dist', 'custom')
+    const rulesPath = path.join(process.cwd(), 'src', 'rules')
+    const customRulesPath = path.join(process.cwd(), 'dist', 'custom-rules')
     
     const [yamlRules, customRules] = await Promise.all([
       ruleLoader.loadRules(rulesPath),
