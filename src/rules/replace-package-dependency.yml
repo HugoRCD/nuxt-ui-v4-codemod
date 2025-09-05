@@ -1,4 +1,0 @@
-id: replace-nuxt-ui-pro-dependency
-language: json
-pattern: '"@nuxt/ui-pro"'
-fix: '"@nuxt/ui"' 
