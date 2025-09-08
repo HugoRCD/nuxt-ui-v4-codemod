@@ -1,0 +1,20 @@
+export default defineAppConfig({
+  ui: {
+    colors: {
+      primary: 'green',
+      neutral: 'slate'
+    }
+  },
+  uiPro: {
+    pageCard: {
+      slots: {
+        root: 'rounded-xl',
+      }
+    },
+    banner: {
+      slots: {
+        root: 'bg-primary'
+      }
+    }
+  }
+})
